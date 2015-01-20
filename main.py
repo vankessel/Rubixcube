@@ -3,19 +3,6 @@
 
 from numpy import *
 
-#I use 3 different copies of the same cube except that each have their front faces pointing in the z, y, x axes, respectively.
-#This is because it is easiest to rotate a face when it is represented as being in the front (or the back).
-rubiz = array([''] * 125).reshape(5, 5, 5)
-rubiy = rubiz.copy()
-rubix = rubiz.copy()
-
-rubiz[1:4,0,1:4] = 'y'
-rubiz[1:4,1:4,0] = 'b'
-rubiz[0,1:4,1:4] = 'r'
-rubiz[1:4,1:4,4] = 'g'
-rubiz[4,1:4,1:4] = 'o'
-rubiz[1:4,4,1:4] = 'w'
-
 def Copy(axis = 'z'):
 	if axis == 'z':
 		for i in range(5):
@@ -69,6 +56,21 @@ def PrintCube():
 	print ''.join(hstack((s, rubiy[0, 1:4, 1:4], n)).flatten())
 	print ''.join(hstack((rubix[4, 1:4, 3:0:-1], rubiz[0, 1:4, 1:4], rubix[0, 1:4, 1:4], rubiz[4, 1:4, 3:0:-1], n)).flatten())
 	print ''.join(hstack((s, rubiy[4, 1:4, 3:0:-1], n)).flatten())
+
+#3 different copies of the same cube are used, they each have their front face pointing in the z, y, x axes, respectively.
+#This is because it is easiest to rotate a face when it is normal to the axis.
+#A 5x5x5 array is used instead of a 3x3x3 array because a side or corner piece has more than 1 color associated with it.
+#It could be thought of as a 3x3x3 cube with a "shell" around it representing the colour.
+rubiz = array([''] * 125).reshape(5, 5, 5)
+rubiy = rubiz.copy()
+rubix = rubiz.copy()
+
+rubiz[1:4,0,1:4] = 'y'
+rubiz[1:4,1:4,0] = 'b'
+rubiz[0,1:4,1:4] = 'r'
+rubiz[1:4,1:4,4] = 'g'
+rubiz[4,1:4,1:4] = 'o'
+rubiz[1:4,4,1:4] = 'w'
 
 Copy('z')
 	
