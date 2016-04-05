@@ -55,7 +55,7 @@ def PrintCube():
 	print
 	print ''.join(hstack((s, rubiy[0, 1:4, 1:4], n)).flatten())
 	print ''.join(hstack((rubix[4, 1:4, 3:0:-1], rubiz[0, 1:4, 1:4], rubix[0, 1:4, 1:4], rubiz[4, 1:4, 3:0:-1], n)).flatten())
-	print ''.join(hstack((s, rubiy[4, 1:4, 3:0:-1], n)).flatten())
+	print ''.join(hstack((s, rubiy[4, 3:0:-1, 1:4], n)).flatten())
 
 #3 different copies of the same cube are used, they each have their front face pointing in the z, y, x axes, respectively.
 #This is because it is easiest to rotate a face when it is normal to the axis.
